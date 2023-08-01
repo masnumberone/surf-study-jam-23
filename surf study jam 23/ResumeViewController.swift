@@ -27,7 +27,7 @@ class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Профиль"s
+        navigationItem.title = "Профиль"
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.titleView?.tintColor = .red
         

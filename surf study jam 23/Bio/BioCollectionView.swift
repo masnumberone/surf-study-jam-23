@@ -58,8 +58,5 @@ class BioCellView: UICollectionViewCell {
         bioLabel.text = text
         layoutSubviews()
     }
-    
-    
 
 }
-

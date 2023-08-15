@@ -194,7 +194,6 @@ class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
 }
 
-
 protocol ResumeViewControllerDelegate {
     func toggleEditSkills()
     var isEditingSkills: Bool { get }
@@ -240,8 +239,3 @@ extension ResumeViewController: ResumeViewControllerDelegate {
         needUpdateSkills()
     }
 }
-
-
-
-
-

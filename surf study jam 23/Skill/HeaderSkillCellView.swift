@@ -9,7 +9,7 @@ import UIKit
 
 class HeaderSkillCellView: UICollectionViewCell {
     static let identifier = "HeaderSkillCellView"
-    var delegate: ResumeViewControllerDelegate!
+    var delegate: ResumeViewControllerDelegate?
     
     private let label: UILabel = {
         let label = UILabel()
@@ -52,14 +52,12 @@ class HeaderSkillCellView: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     @objc
     func imageViewDidTapped() {
-        delegate.toggleEditSkills()
-        let image = delegate.isEditingSkills ? UIImage(named: "arrow") : UIImage(named: "pencil")
+        delegate!.toggleEditSkills()
+        let image = delegate!.isEditingSkills ? UIImage(named: "arrow") : UIImage(named: "pencil")
         imageView.image = image!
     }
-    
     
 }

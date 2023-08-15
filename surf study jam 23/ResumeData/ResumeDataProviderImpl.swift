@@ -33,7 +33,4 @@ class ResumeDataProviderImpl: ResumeDataProvider {
         .init(image: UIImage(named: "myPortrait")!, name: "Мухортов Максим Валентинович", motto: "Очень начинающий iOS-разработчик, опыт один годик", location: "Санкт-Петербург")
     }
     
-    
 }
-
-

@@ -10,8 +10,8 @@ import UIKit
 class SkillCellView: UICollectionViewCell {
     static let identifier = "SkillCellView"
     private var isCellForAdd = false
-    private var skill: Skill!
-    var delegate: ResumeViewControllerDelegate!
+    private var skill: Skill?
+    var delegate: ResumeViewControllerDelegate?
     
     private let label: UILabel = {
         let label = UILabel()
@@ -89,7 +89,6 @@ class SkillCellView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func configure(with skill: Skill, _ isEditingSkills: Bool) {
         self.skill = skill
         label.text = skill.skillName
@@ -112,7 +111,7 @@ class SkillCellView: UICollectionViewCell {
     
     @objc
     private func crossImageDidTapped() {
-        delegate.removeSkill(skill)
+        delegate!.removeSkill(skill!)
     }
     
     func configurePlus() {
@@ -128,12 +127,7 @@ class SkillCellView: UICollectionViewCell {
     
     @objc
     private func plusLabelDidTapped() {
-        delegate.showAllertForAddSkill()
+        delegate!.showAllertForAddSkill()
     }
     
 }
-
-
-
-
-

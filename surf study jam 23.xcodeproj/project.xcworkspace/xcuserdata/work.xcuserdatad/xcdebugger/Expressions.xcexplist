@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ResumeViewController.collectionView(_:didSelectItemAt:):ResumeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.item">
+            </PersistentString>
+            <PersistentString
+               value = "model.skills.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ResumeViewModelImpl.toggleEditSkills():ResumeViewModel.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

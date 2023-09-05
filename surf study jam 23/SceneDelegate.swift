@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         let viewController = ResumeViewController()
+        viewController.model = ResumeViewModelImpl()
+        viewController.model!.delegate = viewController
         
         navigationController.viewControllers = [viewController]
         navigationController.navigationBar.prefersLargeTitles = true

@@ -9,7 +9,7 @@ import UIKit
 
 class HeaderSkillCellView: UICollectionViewCell {
     static let identifier = "HeaderSkillCellView"
-    var delegate: ResumeViewControllerDelegate?
+    var onTapButton: (() -> Void)?
     
     private let label: UILabel = {
         let label = UILabel()
@@ -55,9 +55,7 @@ class HeaderSkillCellView: UICollectionViewCell {
 
     @objc
     func imageViewDidTapped() {
-        delegate!.toggleEditSkills()
-        let image = delegate!.isEditingSkills ? UIImage(named: "arrow") : UIImage(named: "pencil")
-        imageView.image = image!
+        onTapButton?()
     }
     
 }

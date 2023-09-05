@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960F90D92AA763910070A96F /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F90D82AA763910070A96F /* Skill.swift */; };
+		960F90DB2AA763A30070A96F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F90DA2AA763A30070A96F /* Profile.swift */; };
+		960F90DD2AA764820070A96F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960F90DC2AA764820070A96F /* ProfileViewModel.swift */; };
 		96442FF42A79123600984B42 /* ProfileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96442FF32A79123600984B42 /* ProfileCellView.swift */; };
 		96442FF82A79159300984B42 /* SkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96442FF72A79159300984B42 /* SkillCellView.swift */; };
 		96442FFA2A793F3E00984B42 /* HeaderSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96442FF92A793F3E00984B42 /* HeaderSkillCellView.swift */; };
-		96442FFD2A79483C00984B42 /* BioCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96442FFC2A79483C00984B42 /* BioCollectionView.swift */; };
+		96442FFD2A79483C00984B42 /* BioCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96442FFC2A79483C00984B42 /* BioCellView.swift */; };
 		964430012A798ADD00984B42 /* ResumeDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964430002A798ADD00984B42 /* ResumeDataProvider.swift */; };
 		964430042A798B2C00984B42 /* ResumeDataProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964430032A798B2C00984B42 /* ResumeDataProviderImpl.swift */; };
+		9683A2742A8E719700D4A32B /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683A2732A8E719700D4A32B /* ResumeViewModel.swift */; };
 		96D1CDB22A790324000BFE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1CDB12A790324000BFE2E /* AppDelegate.swift */; };
 		96D1CDB42A790324000BFE2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1CDB32A790324000BFE2E /* SceneDelegate.swift */; };
 		96D1CDB62A790324000BFE2E /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1CDB52A790324000BFE2E /* ResumeViewController.swift */; };
@@ -22,12 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		960F90D82AA763910070A96F /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		960F90DA2AA763A30070A96F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		960F90DC2AA764820070A96F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		96442FF32A79123600984B42 /* ProfileCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellView.swift; sourceTree = "<group>"; };
 		96442FF72A79159300984B42 /* SkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCellView.swift; sourceTree = "<group>"; };
 		96442FF92A793F3E00984B42 /* HeaderSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSkillCellView.swift; sourceTree = "<group>"; };
-		96442FFC2A79483C00984B42 /* BioCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCollectionView.swift; sourceTree = "<group>"; };
+		96442FFC2A79483C00984B42 /* BioCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCellView.swift; sourceTree = "<group>"; };
 		964430002A798ADD00984B42 /* ResumeDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDataProvider.swift; sourceTree = "<group>"; };
 		964430032A798B2C00984B42 /* ResumeDataProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDataProviderImpl.swift; sourceTree = "<group>"; };
+		9683A2732A8E719700D4A32B /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
 		96D1CDAE2A790324000BFE2E /* surf study jam 23.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "surf study jam 23.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D1CDB12A790324000BFE2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96D1CDB32A790324000BFE2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960F90D32AA761F10070A96F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				964430022A798B0F00984B42 /* Resume */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		960F90D52AA762130070A96F /* ResumeView */ = {
+			isa = PBXGroup;
+			children = (
+				9683A2732A8E719700D4A32B /* ResumeViewModel.swift */,
+				96D1CDB52A790324000BFE2E /* ResumeViewController.swift */,
+				96442FFF2A79596D00984B42 /* Profile */,
+				96442FFB2A793F4500984B42 /* Skill */,
+				96442FFE2A7958F000984B42 /* Bio */,
+			);
+			path = ResumeView;
+			sourceTree = "<group>";
+		};
+		960F90D62AA763710070A96F /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				964430002A798ADD00984B42 /* ResumeDataProvider.swift */,
+				964430032A798B2C00984B42 /* ResumeDataProviderImpl.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		960F90D72AA763840070A96F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				960F90D82AA763910070A96F /* Skill.swift */,
+				960F90DA2AA763A30070A96F /* Profile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		96442FFB2A793F4500984B42 /* Skill */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +107,7 @@
 		96442FFE2A7958F000984B42 /* Bio */ = {
 			isa = PBXGroup;
 			children = (
-				96442FFC2A79483C00984B42 /* BioCollectionView.swift */,
+				96442FFC2A79483C00984B42 /* BioCellView.swift */,
 			);
 			path = Bio;
 			sourceTree = "<group>";
@@ -69,18 +115,19 @@
 		96442FFF2A79596D00984B42 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				960F90DC2AA764820070A96F /* ProfileViewModel.swift */,
 				96442FF32A79123600984B42 /* ProfileCellView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		964430022A798B0F00984B42 /* ResumeData */ = {
+		964430022A798B0F00984B42 /* Resume */ = {
 			isa = PBXGroup;
 			children = (
-				964430002A798ADD00984B42 /* ResumeDataProvider.swift */,
-				964430032A798B2C00984B42 /* ResumeDataProviderImpl.swift */,
+				960F90D72AA763840070A96F /* Model */,
+				960F90D62AA763710070A96F /* Provider */,
 			);
-			path = ResumeData;
+			path = Resume;
 			sourceTree = "<group>";
 		};
 		96D1CDA52A790324000BFE2E = {
@@ -102,17 +149,14 @@
 		96D1CDB02A790324000BFE2E /* surf study jam 23 */ = {
 			isa = PBXGroup;
 			children = (
+				960F90D32AA761F10070A96F /* API */,
 				96D1CDB12A790324000BFE2E /* AppDelegate.swift */,
 				96D1CDB32A790324000BFE2E /* SceneDelegate.swift */,
-				96D1CDB52A790324000BFE2E /* ResumeViewController.swift */,
-				964430022A798B0F00984B42 /* ResumeData */,
-				96442FFF2A79596D00984B42 /* Profile */,
-				96442FFB2A793F4500984B42 /* Skill */,
-				96442FFE2A7958F000984B42 /* Bio */,
 				96D1CDB72A790324000BFE2E /* Main.storyboard */,
 				96D1CDBA2A790327000BFE2E /* Assets.xcassets */,
 				96D1CDBC2A790327000BFE2E /* LaunchScreen.storyboard */,
 				96D1CDBF2A790327000BFE2E /* Info.plist */,
+				960F90D52AA762130070A96F /* ResumeView */,
 			);
 			path = "surf study jam 23";
 			sourceTree = "<group>";
@@ -210,14 +254,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D1CDB62A790324000BFE2E /* ResumeViewController.swift in Sources */,
+				960F90DB2AA763A30070A96F /* Profile.swift in Sources */,
 				964430012A798ADD00984B42 /* ResumeDataProvider.swift in Sources */,
 				96D1CDB22A790324000BFE2E /* AppDelegate.swift in Sources */,
 				964430042A798B2C00984B42 /* ResumeDataProviderImpl.swift in Sources */,
 				96D1CDB42A790324000BFE2E /* SceneDelegate.swift in Sources */,
 				96442FF42A79123600984B42 /* ProfileCellView.swift in Sources */,
 				96442FFA2A793F3E00984B42 /* HeaderSkillCellView.swift in Sources */,
+				9683A2742A8E719700D4A32B /* ResumeViewModel.swift in Sources */,
 				96442FF82A79159300984B42 /* SkillCellView.swift in Sources */,
-				96442FFD2A79483C00984B42 /* BioCollectionView.swift in Sources */,
+				960F90DD2AA764820070A96F /* ProfileViewModel.swift in Sources */,
+				960F90D92AA763910070A96F /* Skill.swift in Sources */,
+				96442FFD2A79483C00984B42 /* BioCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

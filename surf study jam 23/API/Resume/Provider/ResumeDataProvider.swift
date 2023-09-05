@@ -16,15 +16,3 @@ protocol ResumeDataProvider {
     func getBio() -> String
     func getProfile() -> Profile
 }
-
-struct Skill {
-    let id = UUID()
-    let skillName: String
-}
-
-struct Profile {
-    let image: UIImage
-    let name: String
-    let motto: String
-    let location: String
-}

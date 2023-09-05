@@ -115,7 +115,7 @@ class ProfileCellView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with profile: Profile) {
+    func configure(with profile: ProfileViewModel) {
         imageView.image = profile.image
         nameLabel.text = profile.name
         mottoLabel.text = profile.motto

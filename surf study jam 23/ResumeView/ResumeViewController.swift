@@ -9,21 +9,8 @@ import UIKit
 
 class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
-    
-    private enum ResumeSections {
-        case profile
-        case headerSkill
-        case skills
-        case bio
-    }
-    private let sections = [ResumeSections.profile,
-                            ResumeSections.headerSkill,
-                            ResumeSections.skills,
-                            ResumeSections.bio]
-    
-    lazy private var skills = ResumeDataProviderImpl.shared.getSkills()
-    internal var isEditingSkills = false
-    
+    var model: ResumeViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +40,7 @@ class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
-            let sectionType = self.sections[sectionNumber]
+            let sectionType = self.model!.sections[sectionNumber]
             
             switch sectionType {
             case .profile:
@@ -146,43 +133,47 @@ class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sections.count
+        model!.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let sectionType = self.sections[section]
+        let sectionType = model!.sections[section]
         
         switch sectionType {
         case .profile:  return 1
         case .headerSkill:  return 1
-        case .skills:       return isEditingSkills ? skills.count + 1 : skills.count
+        case .skills:       return model!.isEditingSkills ? model!.skills.count + 1 : model!.skills.count
         case .bio:          return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sectionType = self.sections[indexPath.section]
+        let sectionType = model!.sections[indexPath.section]
         switch sectionType {
         case .profile:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCellView.identifier, for: indexPath) as! ProfileCellView
-            cell.configure(with: ResumeDataProviderImpl.shared.getProfile())
+            cell.configure(with: model!.profile)
             return cell
             
         case .headerSkill:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderSkillCellView.identifier, for: indexPath) as! HeaderSkillCellView
-            cell.delegate = self
+            cell.onTapButton = { [weak self] in
+                self?.model!.toggleEditSkills()
+            }
             return cell
             
         case .skills:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCellView.identifier, for: indexPath) as! SkillCellView
-            cell.delegate = self
-            
-            guard indexPath.item < skills.count else {
+
+            guard indexPath.item < model!.skills.count else {
                 cell.configurePlus()
                 return cell
             }
-            
-            cell.configure(with: skills[indexPath.item], isEditingSkills)
+            let skill = model!.skills[indexPath.item]
+            cell.configure(with: skill.skillName, isEditing: model!.isEditingSkills)
+            cell.onTapButton = { [weak self] in
+                self?.model!.removeSkill(skill)
+            }
             return cell
             
         case .bio:
@@ -192,23 +183,13 @@ class ResumeViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         
     }
-}
 
-protocol ResumeViewControllerDelegate {
-    func toggleEditSkills()
-    var isEditingSkills: Bool { get }
-    func showAllertForAddSkill()
-    func needUpdateSkills()
-    func removeSkill(_ skill: Skill)
-}
-
-extension ResumeViewController: ResumeViewControllerDelegate {
-    func toggleEditSkills() {
-        isEditingSkills.toggle()
-        collectionView.reloadSections(.init(integer: 2))
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard model!.isEditingSkills && (indexPath.section == 2) && (indexPath.item == model!.skills.count) else { return }
+        showAllertForAddSkill()
     }
-    
-    func showAllertForAddSkill() {
+
+    private func showAllertForAddSkill() {
         let alertController = UIAlertController(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", preferredStyle: .alert)
 
         alertController.addTextField { textField in
@@ -218,8 +199,7 @@ extension ResumeViewController: ResumeViewControllerDelegate {
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "Добавить", style: .default) { [weak self, weak alertController] _ in
             if let text = alertController?.textFields?.first?.text {
-                ResumeDataProviderImpl.shared.addSkill(Skill(skillName: text))
-                self!.needUpdateSkills()
+                self!.model!.addSkill(Skill(skillName: text))
             }
         }
 
@@ -228,14 +208,14 @@ extension ResumeViewController: ResumeViewControllerDelegate {
 
         present(alertController, animated: true, completion: nil)
     }
-    
-    func needUpdateSkills() {
-        skills = ResumeDataProviderImpl.shared.getSkills()
+}
+
+protocol ResumeViewControllerDelegate {
+    func updateSkills()
+}
+
+extension ResumeViewController: ResumeViewControllerDelegate {
+    internal func updateSkills() {
         collectionView.reloadSections(.init(integer: 2))
-    }
-    
-    func removeSkill(_ skill: Skill) {
-        ResumeDataProviderImpl.shared.removeSkill(skill)
-        needUpdateSkills()
     }
 }

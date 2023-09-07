@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Skill {
-    let id = UUID()
+struct Skill: Codable {
+    var id = UUID()
     let skillName: String
 }
 

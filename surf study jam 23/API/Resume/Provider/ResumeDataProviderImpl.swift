@@ -11,7 +11,22 @@ class ResumeDataProviderImpl: ResumeDataProvider {
     static var shared: ResumeDataProvider = ResumeDataProviderImpl()
     private init() { }
     
-    private var skills: [Skill] = [.init(skillName: "User Defaults")]
+    private let skillsKey = "skills"
+    private let defaults = UserDefaults.standard
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+    
+    private var skills: [Skill] {
+        get {
+            guard let encodedSkills = defaults.data(forKey: skillsKey) else { return [Skill]() }
+            return try! decoder.decode([Skill].self, from: encodedSkills)
+        }
+        set {
+            if let encodedSkills = try? encoder.encode(newValue) {
+                defaults.set(encodedSkills, forKey: skillsKey)
+            }
+        }
+    }
     
     func getSkills() -> [Skill] {
         skills
@@ -26,7 +41,10 @@ class ResumeDataProviderImpl: ResumeDataProvider {
     }
     
     func getBio() -> String {
-        "Experienced software engineer skilled in developing scalable and maintainable systems"
+        """
+        Студент выпускного курса СПбГУАП по специальности \"Программная инженерия\". \
+        Изучаю Swift и UIKit, пишу проекты для профиля GitHub и готовлюсь к собеседованиям!
+        """
     }
     
     func getProfile() -> Profile {

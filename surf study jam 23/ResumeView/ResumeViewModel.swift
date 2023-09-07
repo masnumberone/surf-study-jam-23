@@ -14,6 +14,7 @@ protocol ResumeViewModel {
     var profile: ProfileViewModel { get }
     var isEditingSkills: Bool { get set }
 
+    func setup()
     func toggleEditSkills()
     func addSkill(_ skill: Skill)
     func removeSkill(_ skill: Skill)
@@ -39,8 +40,30 @@ class ResumeViewModelImpl: ResumeViewModel {
     var provider: ResumeDataProvider
 
     init() {
+        self.skills = [Skill]()
+        self.profile = ProfileViewModel(image: UIImage(), name: "", motto: "", location: "")
         provider = ResumeDataProviderImpl.shared
+    }
+
+    func setup() {
+        setupSkills()
+        setupProfile()
+    }
+
+    private func setupSkills() {
+        if provider.getSkills().isEmpty {
+            setupExampleSkills()
+        } else {
+            self.skills = provider.getSkills()
+        }
+    }
+
+    private func setupExampleSkills() {
+        [Skill].exampleSkills.forEach { provider.addSkill($0) }
         self.skills = provider.getSkills()
+    }
+
+    private func setupProfile() {
         let profile = provider.getProfile()
         self.profile = ProfileViewModel(image: UIImage(named: profile.image)!, name: profile.name, motto: profile.motto, location: profile.location)
     }

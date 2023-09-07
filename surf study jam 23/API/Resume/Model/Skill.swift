@@ -11,3 +11,16 @@ struct Skill {
     let id = UUID()
     let skillName: String
 }
+
+extension Array where Element == Skill {
+    static let exampleSkills = [
+        Skill(skillName: "UserDefaults"),
+        Skill(skillName: "AutoLayout"),
+        Skill(skillName: "MVVM"),
+        Skill(skillName: "Coodinator"),
+        Skill(skillName: "UIKit"),
+        Skill(skillName: "Git"),
+        Skill(skillName: "URLSession"),
+        Skill(skillName: "CoreData")
+    ]
+}

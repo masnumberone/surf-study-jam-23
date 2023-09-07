@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         let viewController = ResumeViewController()
         viewController.model = ResumeViewModelImpl()
+        viewController.model!.setup()
         viewController.model!.delegate = viewController
         
         navigationController.viewControllers = [viewController]

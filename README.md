@@ -7,6 +7,7 @@
 * `ResumeViewModel` содержит модель данных для ResumeViewController и реализует логику взаимодействия с этими данными.
 * `ProfileCellView`, `HeaderSkillCellView`, `SkillCellView`, `BioCellView` являются ячейками коллекции для `ResumeViewController`.
 * `ProfileViewModel` содержит модель данных для PofileCellView.
+* `ResumeDataProviderImpl` соответсвует протоколу ResumeDataProvider, реализует хранение данных для ResumeViewController.
 
 
 ## Демо
